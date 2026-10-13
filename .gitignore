@@ -1,0 +1,45 @@
+# ── 依赖 ────────────────────────────────────────────────────────────────────
+node_modules/
+
+# ── 生成物：由 npm run preview / compare / verify 重新写出来 ──────────────────
+# （tools/ 与 docs/ 的源码本身在 dev 分支跟踪，只有这些体积大的产物不进仓库）
+tools/loop-compare.html
+tools/loop-compare.png
+tools/run-cycle.html
+tools/run-cycle.png
+tools/verify/plugin.js
+tools/verify/driver.js
+tools/verify/*.png
+tools/.*
+docs/asset-contact-sheet.png
+
+# ── 画师原稿与中间产物：本地保留，仓库只收 README 引用的 6 张展示图 ──────────
+# （展示图：mode-run / mode-back / mode-eat / mode-back-eat .webp、panel-live.webp、
+#   state-sprites.png）
+ref/ohjingjing.png
+ref/ohjingjing2.png
+ref/ohjingjing3.png
+ref/ohjingjing4.png
+ref/ohjingjing5.png
+ref/ohjingjing6.png
+ref/ohjingjing7.png
+ref/ohjingjing8.png
+ref/哦鲸鲸.gif
+ref/chrome-capture-2026-10-13.webm
+ref/d10a9dd5680a460da5f619b235deaca9.png
+ref/file.webp
+
+# ── 打包产物 ────────────────────────────────────────────────────────────────
+pack/
+*.tgz
+
+# ── 两条分支的形状（详见 docs/impl-notes.md §9） ─────────────────────────────
+#
+# `dev` 跟踪全部开发内容（src/、tools/、test/、docs/、research/、scripts/），
+# `main` 只保留发布物。**开发路径刻意不写进本文件**，这样在 dev 上新增文件时
+# `git status` 与 `git add .` 都照常工作。
+#
+# 实测过的分支切换行为（同一份工作树）：
+#   · 切到 main：dev 跟踪的文件会从工作树里消失，切回 dev 自动恢复；
+#     未跟踪的文件不受影响，留在原地；
+#   · 因此发布走 `git read-tree`/`commit-tree` 的 plumbing（见 §9），全程不切分支。

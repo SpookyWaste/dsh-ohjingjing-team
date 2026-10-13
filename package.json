@@ -1,0 +1,74 @@
+{
+  "name": "dsh-ohjingjing-team",
+  "version": "0.3.0",
+  "description": "dsh-ohjingjing-team: 用「哦鲸鲸」Q 版形象替换 DSH 智能体团队面板里成员行的状态图标（静止 / 运行 / 失败与任务圆点）。",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "agent-team",
+    "theme",
+    "ohjingjing"
+  ],
+  "type": "module",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": "./client.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "client.js",
+    "lib",
+    "assets/*.png",
+    "assets/manifest.assets.json",
+    "README.md",
+    "README.en.md",
+    "LICENSE",
+    "cordis.patch.yml"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": []
+    }
+  },
+  "scripts": {
+    "gen": "node tools/gen-client.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/run-tests.mjs",
+    "preview": "node tools/build-preview.mjs && node tools/build-contact-sheet.mjs",
+    "compare": "node tools/build-loop-compare.mjs",
+    "prepack": "node scripts/build.mjs"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "*",
+    "@deepseek-ai/dsh-host-webserver": "*",
+    "@deepseek-ai/schemastery": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/cordis": {
+      "optional": true
+    },
+    "@deepseek-ai/dsh-host-webserver": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-host-webserver": ">=0.1.7-rc.2 <0.3.0-0",
+    "@deepseek-ai/schemastery": "^3.18.3",
+    "@types/node": "^26.2.0",
+    "typescript": "^7.0.2"
+  }
+}

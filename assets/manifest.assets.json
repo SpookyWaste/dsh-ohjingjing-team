@@ -1,0 +1,66 @@
+{
+  "generatedBy": "tools/gen-client.mjs",
+  "assetRoute": "/ohjingjing-team",
+  "files": [
+    {
+      "alias": "done.f19c69e059.png",
+      "file": "done.png"
+    },
+    {
+      "alias": "done@2x.3bcc51f79b.png",
+      "file": "done@2x.png"
+    },
+    {
+      "alias": "done@3x.b0b07a82d4.png",
+      "file": "done@3x.png"
+    },
+    {
+      "alias": "error.2a9dafb2b4.png",
+      "file": "error.png"
+    },
+    {
+      "alias": "error@2x.98bd36f5f5.png",
+      "file": "error@2x.png"
+    },
+    {
+      "alias": "error@3x.0aa62a0773.png",
+      "file": "error@3x.png"
+    },
+    {
+      "alias": "idle.113c758413.png",
+      "file": "idle.png"
+    },
+    {
+      "alias": "idle@2x.4b67b106af.png",
+      "file": "idle@2x.png"
+    },
+    {
+      "alias": "idle@3x.11fe7373fd.png",
+      "file": "idle@3x.png"
+    },
+    {
+      "alias": "mode-sheet.aa677855dc.png",
+      "file": "mode-sheet.png"
+    },
+    {
+      "alias": "mode-sheet@2x.da97da3f8d.png",
+      "file": "mode-sheet@2x.png"
+    },
+    {
+      "alias": "mode-sheet@3x.b48da35023.png",
+      "file": "mode-sheet@3x.png"
+    },
+    {
+      "alias": "warning.7cf6302367.png",
+      "file": "warning.png"
+    },
+    {
+      "alias": "warning@2x.9188218fbd.png",
+      "file": "warning@2x.png"
+    },
+    {
+      "alias": "warning@3x.9ae5c8a552.png",
+      "file": "warning@3x.png"
+    }
+  ]
+}

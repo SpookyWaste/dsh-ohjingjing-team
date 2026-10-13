@@ -1,0 +1,10 @@
+# dsh-ohjingjing-team bundle patch。
+#
+# 通过 `dsh plugin --profile web add ./dsh-ohjingjing-team` 安装时，profile 会把本包
+# 追加进 dsh.profile.bundles 并应用这一层，因此插件无需手工编辑 cordis.patch.yml。
+#
+# 行 id 用 `ui-` 前缀与官方 `ui-agent-team` 对齐：它提供的是 Web 界面皮肤，
+# 与官方团队面板的 `ui-agent-team` 行并列存在、互不冲突（本插件不注册槽位）。
+- insert:
+    - id: ui-ohjingjing-team
+      name: dsh-ohjingjing-team

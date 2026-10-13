@@ -1,0 +1,7 @@
+# 行尾是本仓库契约的一部分：手写文件恰好一个 LF 结尾，提交进仓库的 lib/ 产物要与任何机器上
+# `npm run build` 的结果逐字节一致。系统级 core.autocrlf=true 会被这里的 eol=lf 覆盖。
+* text=auto eol=lf
+*.png binary
+*.webp binary
+*.webm binary
+*.gif binary

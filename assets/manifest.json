@@ -1,0 +1,597 @@
+{
+  "generatedBy": "tools/crop-sprites.mjs",
+  "base": 31,
+  "scales": [
+    1,
+    2,
+    3
+  ],
+  "fill": 0.92,
+  "states": [
+    "idle",
+    "error",
+    "warning",
+    "done"
+  ],
+  "sheet": {
+    "name": "mode-sheet",
+    "cols": 8,
+    "rows": 3,
+    "rowFrames": [
+      8,
+      7,
+      6
+    ],
+    "frames": [
+      {
+        "name": "run-1",
+        "row": 0,
+        "col": 0,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 171,
+        "sourceHeight": 238,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 20,
+        "bodyHeight": 28
+      },
+      {
+        "name": "run-2",
+        "row": 0,
+        "col": 1,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 166,
+        "sourceHeight": 239,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 20,
+        "bodyHeight": 29
+      },
+      {
+        "name": "run-3",
+        "row": 0,
+        "col": 2,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 165,
+        "sourceHeight": 233,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 20,
+        "bodyHeight": 28
+      },
+      {
+        "name": "run-4",
+        "row": 0,
+        "col": 3,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 165,
+        "sourceHeight": 239,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 20,
+        "bodyHeight": 29
+      },
+      {
+        "name": "run-5",
+        "row": 0,
+        "col": 4,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 163,
+        "sourceHeight": 236,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 19,
+        "bodyHeight": 28
+      },
+      {
+        "name": "run-6",
+        "row": 0,
+        "col": 5,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 163,
+        "sourceHeight": 238,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 19,
+        "bodyHeight": 28
+      },
+      {
+        "name": "run-7",
+        "row": 0,
+        "col": 6,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 160,
+        "sourceHeight": 230,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 19,
+        "bodyHeight": 27
+      },
+      {
+        "name": "run-8",
+        "row": 0,
+        "col": 7,
+        "source": "ref/ohjingjing8.png",
+        "sourceWidth": 172,
+        "sourceHeight": 230,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 21,
+        "bodyHeight": 27
+      },
+      {
+        "name": "back-1",
+        "row": 1,
+        "col": 0,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 192,
+        "sourceHeight": 219,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 26
+      },
+      {
+        "name": "back-2",
+        "row": 1,
+        "col": 1,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 190,
+        "sourceHeight": 211,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 25
+      },
+      {
+        "name": "back-3",
+        "row": 1,
+        "col": 2,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 175,
+        "sourceHeight": 221,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 21,
+        "bodyHeight": 26
+      },
+      {
+        "name": "back-4",
+        "row": 1,
+        "col": 3,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 194,
+        "sourceHeight": 221,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 26
+      },
+      {
+        "name": "back-5",
+        "row": 1,
+        "col": 4,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 185,
+        "sourceHeight": 223,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 22,
+        "bodyHeight": 27
+      },
+      {
+        "name": "back-6",
+        "row": 1,
+        "col": 5,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 183,
+        "sourceHeight": 213,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 22,
+        "bodyHeight": 25
+      },
+      {
+        "name": "back-7",
+        "row": 1,
+        "col": 6,
+        "source": "ref/ohjingjing3.png",
+        "sourceWidth": 160,
+        "sourceHeight": 221,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 19,
+        "bodyHeight": 26
+      },
+      {
+        "name": "eat-1",
+        "row": 2,
+        "col": 0,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 188,
+        "sourceHeight": 238,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 22,
+        "bodyHeight": 28
+      },
+      {
+        "name": "eat-2",
+        "row": 2,
+        "col": 1,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 185,
+        "sourceHeight": 239,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 22,
+        "bodyHeight": 29
+      },
+      {
+        "name": "eat-3",
+        "row": 2,
+        "col": 2,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 185,
+        "sourceHeight": 239,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 22,
+        "bodyHeight": 29
+      },
+      {
+        "name": "eat-4",
+        "row": 2,
+        "col": 3,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 189,
+        "sourceHeight": 239,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 29
+      },
+      {
+        "name": "eat-5",
+        "row": 2,
+        "col": 4,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 189,
+        "sourceHeight": 238,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 28
+      },
+      {
+        "name": "eat-6",
+        "row": 2,
+        "col": 5,
+        "source": "ref/ohjingjing5.png",
+        "sourceWidth": 196,
+        "sourceHeight": 237,
+        "scale": 0.1193305439330544,
+        "bodyWidth": 23,
+        "bodyHeight": 28
+      }
+    ],
+    "modes": [
+      {
+        "id": "run",
+        "label": "正常跑",
+        "legs": [
+          {
+            "cycles": 1,
+            "row": 0,
+            "flipped": false
+          }
+        ],
+        "steps": 8,
+        "per": 8
+      },
+      {
+        "id": "back",
+        "label": "左右来回跑",
+        "legs": [
+          {
+            "cycles": 4,
+            "row": 1,
+            "flipped": false
+          },
+          {
+            "cycles": 4,
+            "row": 1,
+            "flipped": true
+          }
+        ],
+        "steps": 56,
+        "per": 7
+      },
+      {
+        "id": "eat",
+        "label": "吃饭",
+        "legs": [
+          {
+            "cycles": 1,
+            "row": 2,
+            "flipped": false
+          }
+        ],
+        "steps": 6,
+        "per": 6
+      },
+      {
+        "id": "backEat",
+        "label": "左右来回跑 3 圈 + 吃 1 圈",
+        "legs": [
+          {
+            "cycles": 2,
+            "row": 1,
+            "flipped": false
+          },
+          {
+            "cycles": 1,
+            "row": 1,
+            "flipped": true
+          },
+          {
+            "cycles": 1,
+            "row": 2,
+            "flipped": false
+          }
+        ],
+        "steps": 27,
+        "per": 7
+      }
+    ]
+  },
+  "sprites": [
+    {
+      "name": "idle",
+      "source": "ref/ohjingjing.png",
+      "sourceWidth": 281,
+      "sourceHeight": 356,
+      "scale": 0.0801123595505618,
+      "bodyWidth": 23,
+      "bodyHeight": 29
+    },
+    {
+      "name": "error",
+      "source": "ref/ohjingjing2.png",
+      "sourceWidth": 217,
+      "sourceHeight": 270,
+      "scale": 0.10562962962962963,
+      "bodyWidth": 23,
+      "bodyHeight": 29
+    },
+    {
+      "name": "warning",
+      "source": "ref/ohjingjing.png",
+      "sourceWidth": 257,
+      "sourceHeight": 416,
+      "scale": 0.0685576923076923,
+      "bodyWidth": 18,
+      "bodyHeight": 29
+    },
+    {
+      "name": "done",
+      "source": "ref/ohjingjing.png",
+      "sourceWidth": 327,
+      "sourceHeight": 405,
+      "scale": 0.07041975308641975,
+      "bodyWidth": 23,
+      "bodyHeight": 29
+    },
+    {
+      "name": "run-1",
+      "row": 0,
+      "col": 0,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 171,
+      "sourceHeight": 238,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 20,
+      "bodyHeight": 28
+    },
+    {
+      "name": "run-2",
+      "row": 0,
+      "col": 1,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 166,
+      "sourceHeight": 239,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 20,
+      "bodyHeight": 29
+    },
+    {
+      "name": "run-3",
+      "row": 0,
+      "col": 2,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 165,
+      "sourceHeight": 233,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 20,
+      "bodyHeight": 28
+    },
+    {
+      "name": "run-4",
+      "row": 0,
+      "col": 3,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 165,
+      "sourceHeight": 239,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 20,
+      "bodyHeight": 29
+    },
+    {
+      "name": "run-5",
+      "row": 0,
+      "col": 4,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 163,
+      "sourceHeight": 236,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 19,
+      "bodyHeight": 28
+    },
+    {
+      "name": "run-6",
+      "row": 0,
+      "col": 5,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 163,
+      "sourceHeight": 238,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 19,
+      "bodyHeight": 28
+    },
+    {
+      "name": "run-7",
+      "row": 0,
+      "col": 6,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 160,
+      "sourceHeight": 230,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 19,
+      "bodyHeight": 27
+    },
+    {
+      "name": "run-8",
+      "row": 0,
+      "col": 7,
+      "source": "ref/ohjingjing8.png",
+      "sourceWidth": 172,
+      "sourceHeight": 230,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 21,
+      "bodyHeight": 27
+    },
+    {
+      "name": "back-1",
+      "row": 1,
+      "col": 0,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 192,
+      "sourceHeight": 219,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 26
+    },
+    {
+      "name": "back-2",
+      "row": 1,
+      "col": 1,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 190,
+      "sourceHeight": 211,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 25
+    },
+    {
+      "name": "back-3",
+      "row": 1,
+      "col": 2,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 175,
+      "sourceHeight": 221,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 21,
+      "bodyHeight": 26
+    },
+    {
+      "name": "back-4",
+      "row": 1,
+      "col": 3,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 194,
+      "sourceHeight": 221,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 26
+    },
+    {
+      "name": "back-5",
+      "row": 1,
+      "col": 4,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 185,
+      "sourceHeight": 223,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 22,
+      "bodyHeight": 27
+    },
+    {
+      "name": "back-6",
+      "row": 1,
+      "col": 5,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 183,
+      "sourceHeight": 213,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 22,
+      "bodyHeight": 25
+    },
+    {
+      "name": "back-7",
+      "row": 1,
+      "col": 6,
+      "source": "ref/ohjingjing3.png",
+      "sourceWidth": 160,
+      "sourceHeight": 221,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 19,
+      "bodyHeight": 26
+    },
+    {
+      "name": "eat-1",
+      "row": 2,
+      "col": 0,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 188,
+      "sourceHeight": 238,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 22,
+      "bodyHeight": 28
+    },
+    {
+      "name": "eat-2",
+      "row": 2,
+      "col": 1,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 185,
+      "sourceHeight": 239,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 22,
+      "bodyHeight": 29
+    },
+    {
+      "name": "eat-3",
+      "row": 2,
+      "col": 2,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 185,
+      "sourceHeight": 239,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 22,
+      "bodyHeight": 29
+    },
+    {
+      "name": "eat-4",
+      "row": 2,
+      "col": 3,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 189,
+      "sourceHeight": 239,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 29
+    },
+    {
+      "name": "eat-5",
+      "row": 2,
+      "col": 4,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 189,
+      "sourceHeight": 238,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 28
+    },
+    {
+      "name": "eat-6",
+      "row": 2,
+      "col": 5,
+      "source": "ref/ohjingjing5.png",
+      "sourceWidth": 196,
+      "sourceHeight": 237,
+      "scale": 0.1193305439330544,
+      "bodyWidth": 23,
+      "bodyHeight": 28
+    }
+  ]
+}
