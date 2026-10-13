@@ -51,9 +51,10 @@ The icon slot on the left of each member row in the Team panel (the "Agent Team"
 ```sh
 dsh plugin --profile web add dsh-ohjingjing-team          
 ```
-### Web / desktop plugin manager: on the plugin manager page, click "Add plugin" in the top right → enter the plugin name `dsh-ohjingjing-team` or the repository name
+### Web / desktop plugin manager
+On the plugin manager page, click "Add plugin" in the top right → enter the plugin name `dsh-ohjingjing-team` or the repository name
 ```sh
-dsh plugin --profile web add ./dsh-ohjingjing-team-0.3.0.tgz
+https://github.com/SpookyWaste/dsh-ohjingjing-team
 ```
 Refresh the Web GUI and open the Team panel once.
 

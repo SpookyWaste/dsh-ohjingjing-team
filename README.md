@@ -51,9 +51,10 @@
 ```sh
 dsh plugin --profile web add dsh-ohjingjing-team          
 ```
-### 网页版/桌面版插件管理安装：插件管理页面，右上角「添加插件」→ 填入插件名 `dsh-ohjingjing-team` 或仓库名
+### 网页版/桌面版插件管理安装
+插件管理页面，右上角「添加插件」→ 填入插件名 `dsh-ohjingjing-team` 或仓库名
 ```sh
-dsh plugin --profile web add ./dsh-ohjingjing-team-0.3.0.tgz
+https://github.com/SpookyWaste/dsh-ohjingjing-team
 ```
 装完刷新 Web GUI，打开一次团队面板即可看到效果。
 
