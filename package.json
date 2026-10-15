@@ -1,7 +1,7 @@
 {
   "name": "dsh-ohjingjing-team",
-  "version": "0.3.0",
-  "description": "dsh-ohjingjing-team: 用「哦鲸鲸」Q 版形象替换 DSH 智能体团队面板里成员行的状态图标（静止 / 运行 / 失败与任务圆点）。",
+  "version": "0.4.1",
+  "description": "DSH 的哦鲸鲸主题：成员行皮肤 + 标题栏跑道 + 子代理列表，三块组件可分别开关。",
   "keywords": [
     "dsh",
     "dsh-plugin",
@@ -18,12 +18,28 @@
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
+    "./skin": {
+      "types": "./lib/skin.d.ts",
+      "default": "./lib/skin.js"
+    },
+    "./runners": {
+      "types": "./lib/runners.d.ts",
+      "default": "./lib/runners.js"
+    },
+    "./catalog": {
+      "types": "./lib/catalog.d.ts",
+      "default": "./lib/catalog.js"
+    },
     "./client": "./client.js",
+    "./skin/locale/*": "./locale/skin/*",
+    "./runners/locale/*": "./locale/runners/*",
+    "./catalog/locale/*": "./locale/catalog/*",
     "./package.json": "./package.json"
   },
   "files": [
     "client.js",
     "lib",
+    "locale",
     "assets/*.png",
     "assets/manifest.assets.json",
     "README.md",
@@ -37,7 +53,11 @@
     },
     "client": {
       "platform": "web",
-      "inject": []
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-renderer",
+        "@deepseek-ai/dsh-client-ui-session",
+        "@deepseek-ai/dsh-api-session-controller"
+      ]
     }
   },
   "scripts": {

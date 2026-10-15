@@ -22,6 +22,7 @@
       7,
       6
     ],
+    "stride": 9,
     "frames": [
       {
         "name": "run-1",
@@ -263,9 +264,11 @@
           {
             "cycles": 1,
             "row": 0,
-            "flipped": false
+            "flipped": false,
+            "travel": "move"
           }
         ],
+        "wraps": true,
         "steps": 8,
         "per": 8
       },
@@ -276,14 +279,17 @@
           {
             "cycles": 4,
             "row": 1,
-            "flipped": false
+            "flipped": false,
+            "travel": "move"
           },
           {
             "cycles": 4,
             "row": 1,
-            "flipped": true
+            "flipped": true,
+            "travel": "move"
           }
         ],
+        "wraps": false,
         "steps": 56,
         "per": 7
       },
@@ -294,9 +300,11 @@
           {
             "cycles": 1,
             "row": 2,
-            "flipped": false
+            "flipped": false,
+            "travel": "stand"
           }
         ],
+        "wraps": false,
         "steps": 6,
         "per": 6
       },
@@ -307,19 +315,23 @@
           {
             "cycles": 2,
             "row": 1,
-            "flipped": false
+            "flipped": false,
+            "travel": "move"
           },
           {
             "cycles": 1,
             "row": 1,
-            "flipped": true
+            "flipped": true,
+            "travel": "move"
           },
           {
             "cycles": 1,
             "row": 2,
-            "flipped": false
+            "flipped": false,
+            "travel": "stand"
           }
         ],
+        "wraps": false,
         "steps": 27,
         "per": 7
       }

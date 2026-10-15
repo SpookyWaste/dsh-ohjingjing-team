@@ -4,14 +4,13 @@
 
 # <img src="ref/mode-run.webp"> dsh-ohjingjing-team <img src="ref/mode-eat.webp">
 
-### Replacing the status icons in the DSH Agent Team panel's member rows with "ohjingjing"
+### Replacing the Agent Team panel's member-row status icons with "ohjingjing" whales, drawing whales that run and stop in the session header, and swapping the green dots in the subagent dropdown for them too
 
-**A pure CSS skin**: registers no slots, reads no remote data, modifies no official component
+**Three independently switchable components**: the member-row skin and the subagent list are pure CSS; the header runway reads the roster and the session status and builds its own track to the right of the official tab row
 
-[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.1--alpha.2-blue)](https://github.com/deepseek-ai/deepseek-harness)
-![Node](https://img.shields.io/badge/Node-22%2B-339933?logo=node.js&logoColor=white)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Zero JS](https://img.shields.io/badge/runtime-zero%20JS-8a5cf6)
+[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.1--alpha.3-blue)](https://github.com/deepseek-ai/deepseek-harness)
+[![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/spookywaste/dsh-ohjingjing-team)
+[![npm](https://img.shields.io/npm/v/dsh-ohjingjing-team?logo=npm&logoColor=white)](https://www.npmjs.com/package/dsh-ohjingjing-team)
 
 [**中文**](README.md) &nbsp;·&nbsp; **English**
 
@@ -21,11 +20,29 @@
 
 ## 🐳 What is this
 
-~~A team of ohjingjing~~ — replacing the status icons on the left of each member row in the DSH Agent Team panel with "ohjingjing".
+~~Building an ohjingjing team~~ Replacing the DSH Agent Team panel's member-row status icons with "ohjingjing" whales.
 
 <p align="center">
   <img src="ref/panel-live.webp" width="569"><br>
   <sub>An ohjingjing team</sub>
+</p>
+
+## 🛝 The header runway
+
+The empty strip to the right of the header's "Dialogue / Trace" tabs becomes a **shared track**: the lead session and its subagents show up here to run<del><sub>and to freeload</sub></del>.
+
+<p align="center">
+  <img src="ref/header-runway_1.png" width="760"><br>
+  <sub>Lots of ohjingjing running</sub>
+</p>
+
+## 🟢 The subagent list
+
+Every row of the "N subagents ▾" dropdown gets a whale where its status dot used to be:
+
+<p align="center">
+  <img src="ref/catalog_1.png" width="20%"><br>
+  <sub>The dropdown: whales where the dots were, with row height and text layout unchanged</sub>
 </p>
 
 ## 🎬 Running
@@ -56,12 +73,23 @@ On the plugin manager page, click "Add plugin" in the top right → enter the pl
 ```sh
 https://github.com/SpookyWaste/dsh-ohjingjing-team
 ```
-Refresh the Web GUI and open the Team panel once.
+Refresh the Web GUI and open the Team panel once. The header runway appears on its own in the session header; no extra switch is needed.
 
+**One row per switch in the plugin manager**, all on by default, each switchable on its own; every row shows its own name and one-line description:
+
+| Component | Entry name | What it does |
+|---|---|---|
+| Agent Team skin | `dsh-ohjingjing-team/skin` | member-row icons become ohjingjing |
+| Header runway | `dsh-ohjingjing-team/runners` | the runway to the right of the header tab row |
+| Subagent list | `dsh-ohjingjing-team/catalog` | the dots in the "N subagents" dropdown rows |
+| The package itself | `dsh-ohjingjing-team` | the stylesheets and the runway runtime shared by the three |
+
+#### Dependencies
 | Item | Value |
 |---|---|
-| Official Agent Team component<sub>@deepseek-ai/dsh-experimental-agent-team-profile</sub> | keep it enabled |
 | DSH | `≥0.2.0-rc.2` |
+| Official Agent Team component<sub>@deepseek-ai/dsh-experimental-agent-team-profile</sub> | needed by component 1 only; keep it enabled |
+
 
 ## 🎛 Tunables
 
@@ -69,20 +97,27 @@ Appearance lives in custom properties on `:root`; overriding them needs no rebui
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `--oj-max-size` | `40px` | Upper bound so the icon cannot run away at extreme font sizes. |
-| `--oj-duration` | `0.7s` | **One cycle**. Modes with more steps scale up automatically. |
+| `--oj-max-size` | `40px` | **Skin** size bound, so the icon cannot run away at extreme font sizes. |
+| `--oj-runner-size` | `26px` | **Runway** whale edge (at 26px the feet rest on that separator line). |
+| `--oj-runners-gap` | `26px` | **Runway** slot spacing on first appearance (a full roster narrows it to fit the track). |
+| `--oj-lap-duration` | `60.2s` | **Runway** duration of one lap (60.2s = 86 walk cycles, so footfalls stay in phase with the sprite; a longer or shorter lap scales the ground speed). |
+| `--oj-max-subagents` | `20` | How many **subagents** the runway draws at most, beyond the lead (DSH keeps finished subagents in its totals, so the newest ones win). |
+| `--oj-catalog-size` | `26px` | **Subagent list** icon-slot edge (the official slot is 14×17; enlarging it shifts the row text 12px right without changing row height). |
+| `--oj-duration` | `0.7s` | **One walk cycle**, shared by the three components; animations with more steps scale up automatically. |
 
 ## 📜 Versions
 
 <details>
 <summary>Version history (click to expand)</summary>
 
-- **0.3.0** — the running state goes from "one seven-frame loop" to **four** animations.
-- **0.2.2** — fixes **bleed from the neighbouring frame** at frame edges.
-- **0.2.1** — fixes the running animation **skipping one frame**: the keyframe time scale and position scale had been written as the same scale, so the last frame's interval had zero length.
-- **0.2.0** — the failed state switches to a **handstand** pose; the running state goes from a two-frame round trip to a **seven-frame loop**.
-- **0.1.2** — fixes clipped artwork in the failed state.
-- **0.1.1** — fixes blurred icons on high-DPI screens and the `error` state falling back to `idle`; the default icon edge length goes 28px → 31px (using up the two text lines' height, with the member card still 51px).
+- **0.4.1** — the runway became **one shared track**: the lead is always on it, followed by the newest 20 subagents; a finished lap respawns at the start with no offset, stopping happens in place, and a script cycles through the actions; a new **subagent list** component swaps the dropdown dots for whales; `--oj-cruise-scale` and `--oj-min-segment` were replaced by `--oj-lap-duration`.
+- **0.4.0** — adds the **header runway** component: subagents are drawn to the right of the session header's tab row, each with the same mode as its member-row position and with displacement reversing together with the turn; the two components are switchable separately.
+- **0.3.0** — running went from one seven-frame run to **four** animations.
+- **0.2.2** — fixes **bleed between neighbouring frames** at the frame edges.
+- **0.2.1** — fixes the running animation **skipping a frame**: the time axis and the position axis were written on one scale, so the last frame had a zero-length time window.
+- **0.2.0** — the failure state becomes a **handstand**; the running state goes from two-frame ping-pong to a **seven-frame loop**.
+- **0.1.2** — fixes the cropped failure-state artwork.
+- **0.1.1** — fixes blurry icons on high-DPI screens and `error` falling back to `idle`; default icon edge 28px → 31px (using the full two-line text height, member card stays 51px).
 - **0.1.0** — first release.
 
 </details>

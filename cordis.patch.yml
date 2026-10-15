@@ -3,8 +3,52 @@
 # 通过 `dsh plugin --profile web add ./dsh-ohjingjing-team` 安装时，profile 会把本包
 # 追加进 dsh.profile.bundles 并应用这一层，因此插件无需手工编辑 cordis.patch.yml。
 #
-# 行 id 用 `ui-` 前缀与官方 `ui-agent-team` 对齐：它提供的是 Web 界面皮肤，
-# 与官方团队面板的 `ui-agent-team` 行并列存在、互不冲突（本插件不注册槽位）。
+# 四条 entry = 插件管理页里的**三块可分别开关的组件 + 一条前端资源**（一条 entry 就是一个开关）。
+#
+# | entry id                        | 条目名（模块规格符）              | 显示名 / 组件      |
+# |---------------------------------|-----------------------------------|--------------------|
+# | ui-ohjingjing-team-skin         | dsh-ohjingjing-team/skin          | 状态皮肤           |
+# | ui-ohjingjing-team-runners      | dsh-ohjingjing-team/runners       | 标题栏跑道         |
+# | ui-ohjingjing-team-catalog      | dsh-ohjingjing-team/catalog       | 子代理列表         |
+# | ui-ohjingjing-team-client       | dsh-ohjingjing-team               | 前端资源（无开关能力） |
+#
+# ## 为什么三块组件的条目名是**子路径**，而前端资源那条是裸包名
+#
+# 插件管理页里每一行的显示名与说明来自 `<条目名>/locale/<语言>.json`
+# （`@deepseek-ai/dsh-app-boot` 的 `readPluginMeta()`）：**同一个包名写三条 entry，三行就会
+# 显示同一份包名与描述**。要让每行显示自己的名字，只能让条目名各不相同——子路径规格符
+# （`dsh-bash-native` 的 `/presets`、`/terminal` 也是这么做的）自带自己的 `locale/` 目录。
+#
+# 而客户端半区只有**裸包名**能担：`dsh-client-modules` 的 `exactPackageSpecifier()` 不接受
+# 带斜杠的规格符，所以子路径条目既不注册客户端模块、也不会撞上「同一个包来自多个来源」——
+# 后端按包名去重，同一个包出现两个来源就直接抛
+# `package dsh-ohjingjing-team resolves from multiple active Loader sources`，整个 Web 客户端起不来。
+# 于是四条 entry 分工：三条子路径只管宿主侧的能力开关，裸名那条提供浏览器半区
+# （三份样式表 + 跑道运行时），并按宿主半区的 `components.json` 决定装哪几块。
+#
+# 四条 entry 解析到**同一个模块实例**（三条子路径只是再导出 `lib/index.js`），所以素材路由的
+# 引用计数与活跃组件注册表跨条目协调。
+#
+# ## 开关
+#
+# 四条都不带 `disabled`，即默认都开。删除某一行（或加上 `disabled: true`）即可去掉那一块；
+# 只留一行、并且不带 `config.component`（默认 `all`）时三块都开，与历史单行写法的行为一致。
+# **前端资源那条建议保持开启**：关掉它，另外三块还在运行，但浏览器里不会装样式表，
+# 画面上就看不到鲸鲸了。
 - insert:
-    - id: ui-ohjingjing-team
+    - id: ui-ohjingjing-team-skin
+      name: 'dsh-ohjingjing-team/skin'
+      config:
+        component: skin
+    - id: ui-ohjingjing-team-runners
+      name: 'dsh-ohjingjing-team/runners'
+      config:
+        component: runners
+    - id: ui-ohjingjing-team-catalog
+      name: 'dsh-ohjingjing-team/catalog'
+      config:
+        component: catalog
+    - id: ui-ohjingjing-team-client
       name: dsh-ohjingjing-team
+      config:
+        component: client

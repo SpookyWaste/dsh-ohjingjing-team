@@ -13,9 +13,9 @@ tools/verify/*.png
 tools/.*
 docs/asset-contact-sheet.png
 
-# ── 画师原稿与中间产物：本地保留，仓库只收 README 引用的 6 张展示图 ──────────
+# ── 画师原稿与中间产物：本地保留，仓库只收 README 引用的展示图 ──────────────
 # （展示图：mode-run / mode-back / mode-eat / mode-back-eat .webp、panel-live.webp、
-#   state-sprites.png）
+#   state-sprites.png、header-runway_1.png、catalog_1.png）
 ref/ohjingjing.png
 ref/ohjingjing2.png
 ref/ohjingjing3.png
@@ -33,7 +33,7 @@ ref/file.webp
 pack/
 *.tgz
 
-# ── 两条分支的形状（详见 docs/impl-notes.md §9） ─────────────────────────────
+# ── 两条分支的形状（详见 docs/impl-notes.md §10） ────────────────────────────
 #
 # `dev` 跟踪全部开发内容（src/、tools/、test/、docs/、research/、scripts/），
 # `main` 只保留发布物。**开发路径刻意不写进本文件**，这样在 dev 上新增文件时
@@ -42,4 +42,4 @@ pack/
 # 实测过的分支切换行为（同一份工作树）：
 #   · 切到 main：dev 跟踪的文件会从工作树里消失，切回 dev 自动恢复；
 #     未跟踪的文件不受影响，留在原地；
-#   · 因此发布走 `git read-tree`/`commit-tree` 的 plumbing（见 §9），全程不切分支。
+#   · 因此发布走 `git read-tree`/`commit-tree` 的 plumbing（见 §10），全程不切分支。
