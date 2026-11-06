@@ -8,7 +8,7 @@
 
 **三块可分别开关的组件**：成员行皮肤与子代理列表是纯 CSS；标题栏跑道读名册与状态，在官方标签行右侧自建一条轨道
 
-[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.1--alpha.3-blue)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.2-blue)](https://github.com/deepseek-ai/deepseek-harness)
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/spookywaste/dsh-ohjingjing-team)
 [![npm](https://img.shields.io/npm/v/dsh-ohjingjing-team?logo=npm&logoColor=white)](https://www.npmjs.com/package/dsh-ohjingjing-team)
 
@@ -110,6 +110,7 @@ https://github.com/SpookyWaste/dsh-ohjingjing-team
 <details>
 <summary>版本历史（点击展开）</summary>
 
+- **0.4.2** —— 修复 DSH 0.2.2 起**标题栏跑道整条不出现**：官方把 `[data-conversation-tabs]` 从整行移到行内一个按内容收缩的标签列表上，跑道仍按该元素量自由宽度（结果恒为 0）；现在按标签行量，并从行内最右内容（含「更多视图」按钮）之后起跑。
 - **0.4.1** —— 跑道改成**一条共用轨道**：lead 永远在、跟着最新的 20 个子代理，跑完一圈回起点重生（无 offset）、停下就地站住、按剧本周期性切换动作；新增**子代理列表**组件（下拉行的圆点换成鲸鲸）；`--oj-cruise-scale` 与 `--oj-min-segment` 被 `--oj-lap-duration` 取代。
 - **0.4.0** —— 新增**标题栏跑道**组件：会话头部标签行右侧画上子代理，动作与成员行同位次同玩法、位移与动画同步折返；两块组件可分别开关。
 - **0.3.0** —— 运行中从「一套七帧跑动」变成**四种**动画。

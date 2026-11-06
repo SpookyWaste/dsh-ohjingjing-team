@@ -229,7 +229,9 @@
    *
    * 1. **挂一个隐藏锚点**：往官方槽位 `conversation.session.header.actions` 注册一条同槽条目，
    *    渲染一个 `display:none` 的 span。官方不给插件 DOM 句柄，所以只能从锚点往上找本头部的
-   *    标签行（`[data-conversation-tabs]`）——多头部布局下也不会画到别人家里。
+   *    标签列表（`[data-conversation-tabs]`）——多头部布局下也不会画到别人家里。
+   *    标签列表**不一定是整行**：新版的标记落在行内一个按内容收缩的列表上，标记的父级才是
+   *    横贯头部的标签行。容器插进**行**里，几何也按行量；两者的区分见 `rowOf()`。
    * 2. **订阅名册**：**lead（本会话）永远在跑道上**，后面跟着目录里**最新的 N 个子代理**
    *    （DSH 会把历史子代理留在总数里，所以取尾部；`--oj-max-subagents` 是 N）。
    * 3. **画跑道**：在标签行自由区里插一个绝对定位容器，最多 1 + N 只鲸鲸，共用一条轨道。
@@ -420,6 +422,10 @@
         holder: null,
         container: null,
         anchor: null,
+        row: null,
+        /** 为了让容器定位而临时改成 `position: relative` 的行；撤销时还原它的内联值。 */
+        positionedRow: null,
+        positionedOriginal: '',
         observer: null,
         timer: null,
         entries: [],
@@ -429,13 +435,13 @@
       }
 
       /**
-       * 从锚点往上找**本头部**的标签行：第一个「子树里恰好有一个标签行」的祖先。
+       * 从锚点往上找**本头部**的标签列表：第一个「子树里恰好有一个标签列表」的祖先。
        *
        * 往上数而不是往下找，是为了多头部布局（右栏聊天面板也有一份头部）：第一个符合条件的
        * 祖先就是自己这一份。若某个祖先里已经有两个以上，说明再往上也分不清归属，直接放弃
        * （宁可不画，也不画到别的会话头上）。
        * @param {Element} node - 隐藏锚点节点。
-       * @returns {Element|null} 标签行元素。
+       * @returns {Element|null} 带 `[data-conversation-tabs]` 的标签列表。
        */
       function findAnchor(node) {
         let element = node === null ? null : node.parentElement
@@ -449,12 +455,33 @@
       }
 
       /**
+       * 标记所在的**标签行**：容器插进它、几何也按它量。
+       *
+       * 旧头部把 `[data-conversation-tabs]` 直接放在整行上；新头部把标记放在行内一个按内容
+       * 收缩的标签列表上，右侧还可能跟着「更多视图」按钮。列表没有占满父级宽度时，父级才是
+       * 横贯头部的行。判定按宽度做，且在每次同步时重做，首帧宽度还没稳定也不会选错。
+       * @param {Element} anchor - 带 `[data-conversation-tabs]` 的标签列表。
+       * @returns {Element} 标签行（旧头部里就是列表自己）。
+       */
+      function rowOf(anchor) {
+        const parent = anchor.parentElement
+        if (parent === null || parent === undefined) return anchor
+        const listWidth = anchor.getBoundingClientRect().width
+        const parentRect = parent.getBoundingClientRect()
+        // 父级可能是整行，也可能只是外面那层带内边距的头部：比的是父级的**内容宽度**
+        // （旧头部里行占满头部内容区，两者相等；新头部里行内列表按内容收缩，父级明显更宽）。
+        const parentStyle = getComputedStyle(parent)
+        const padding = (Number.parseFloat(parentStyle.paddingLeft) || 0) + (Number.parseFloat(parentStyle.paddingRight) || 0)
+        return parentRect.width - padding > listWidth + 1 ? parent : anchor
+      }
+
+      /**
        * 保证容器存在、且**仍然挂在本头部的标签行上**。
        *
-       * 两种情况要重新挂：标签行被官方重建（节点断开连接），或者标签行本身消失了
-       * （会话视图只剩一个时官方就不渲染这一行）。后者必须把容器摘掉——留在 DOM 里
-       * 就是一个再也没人管的孤儿。
-       * @returns {Element|null} 容器；找不到标签行时为 null。
+       * 三种情况要重新挂：标签行被官方重建（节点断开连接）、标签行本身消失了（会话视图
+       * 只剩一个时官方就不渲染这一行）、或者行/列表的分界变了（首帧宽度与稳定后不同）。
+       * 标签行消失时必须把容器摘掉——留在 DOM 里就是一个再也没人管的孤儿。
+       * @returns {Element|null} 容器；找不到标签列表时为 null。
        */
       function ensureContainer() {
         const anchor = findAnchor(state.holder)
@@ -462,12 +489,21 @@
           if (state.container !== null) drop()
           return null
         }
-        if (state.container !== null && state.container.isConnected === true && state.container.parentElement === anchor) return state.container
+        const row = rowOf(anchor)
+        if (state.container !== null && state.container.isConnected === true && state.row === row && state.container.parentElement === row) return state.container
         if (state.container !== null) drop()
         const container = document.createElement('div')
         container.setAttribute(BOX_ATTR, '')
-        anchor.appendChild(container)
+        // 容器是绝对定位：行必须当定位祖先，否则 left 会相对更外层的祖先解析。官方两张
+        // 头部样式里行本来就是 relative，这里只在不是时补一个（不改变行的排版）。
+        if (getComputedStyle(row).position === 'static') {
+          state.positionedRow = row
+          state.positionedOriginal = row.style.position
+          row.style.position = 'relative'
+        }
+        row.appendChild(container)
         state.anchor = anchor
+        state.row = row
         state.container = container
         const style = getComputedStyle(container)
         state.params = {
@@ -479,7 +515,7 @@
           fade: plan.fade,
           reduced: prefersReducedMotion(),
         }
-        observe(anchor)
+        observe(anchor, row)
         // 首帧量到的宽度可能早于布局/字体稳定（实测：挂载时视口还没到最终尺寸，而此后
         // **不会**再有 resize 事件可依赖——观察者只对「观察开始之后的变化」负责），
         // 所以在下一帧再量一次。幂等，只把轨道长度与真实宽度对齐。
@@ -497,20 +533,31 @@
         if (state.observer !== null && state.observer !== undefined) state.observer.disconnect()
         state.observer = null
         if (state.container !== null) state.container.remove()
+        if (state.positionedRow !== null) {
+          state.positionedRow.style.position = state.positionedOriginal
+          state.positionedRow = null
+          state.positionedOriginal = ''
+        }
         state.container = null
         state.anchor = null
+        state.row = null
         state.params = null
         state.lapPx = 0
         state.runners.clear()
       }
 
-      /** 量自由宽度：从最后一个标签的右边缘（跳过自己）到标签行右边缘，再留一个 GAP。 */
+      /**
+       * 量自由宽度：从行里最靠右的已有内容（标签列表、可能存在的「更多视图」按钮）的右边缘，
+       * 到标签行右边缘，再留一个 GAP。
+       */
       function measure(container) {
         const anchor = state.anchor
-        if (anchor === null) return 0
-        const rect = anchor.getBoundingClientRect()
+        const row = state.row ?? anchor
+        if (anchor === null || row === null) return 0
+        const rect = row.getBoundingClientRect()
         let right = rect.left
-        for (const child of anchor.children) {
+        for (const child of row.children) {
+          if (child === container) continue
           if (child.hasAttribute !== undefined && child.hasAttribute(BOX_ATTR)) continue
           const childRect = child.getBoundingClientRect()
           if (childRect.right > right) right = childRect.right
@@ -836,7 +883,13 @@
       }
 
       /** 轨道长度跟着标签行的宽度变；容器是绝对定位的，不会把观察者自己再触发一遍。 */
-      function observe(anchor) {
+      /**
+       * 轨道长度跟着标签行与标签列表的宽度变；容器是绝对定位的，不会把观察者自己再触发一遍。
+       * 两个都要观察：新头部里列表按内容收缩，行宽随窗口变，列表宽随标签增减变。
+       * @param {Element} anchor - 带 `[data-conversation-tabs]` 的标签列表。
+       * @param {Element} row - 标签行。
+       */
+      function observe(anchor, row) {
         if (state.observer !== null && state.observer !== undefined) state.observer.disconnect()
         state.observer = null
         if (typeof ResizeObserver !== 'function') return
@@ -845,6 +898,7 @@
           paint(state.container, measure(state.container))
         })
         state.observer.observe(anchor)
+        if (row !== anchor) state.observer.observe(row)
       }
 
       /** 卸载：撤掉容器、观察者与定时器，下次 sync 会重新挂。 */

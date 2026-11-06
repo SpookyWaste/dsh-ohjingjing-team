@@ -8,7 +8,7 @@
 
 **Three independently switchable components**: the member-row skin and the subagent list are pure CSS; the header runway reads the roster and the session status and builds its own track to the right of the official tab row
 
-[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.1--alpha.3-blue)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.2-blue)](https://github.com/deepseek-ai/deepseek-harness)
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/spookywaste/dsh-ohjingjing-team)
 [![npm](https://img.shields.io/npm/v/dsh-ohjingjing-team?logo=npm&logoColor=white)](https://www.npmjs.com/package/dsh-ohjingjing-team)
 
@@ -110,6 +110,7 @@ Appearance lives in custom properties on `:root`; overriding them needs no rebui
 <details>
 <summary>Version history (click to expand)</summary>
 
+- **0.4.2** — fixes the **header runway disappearing entirely** on DSH 0.2.2+: the official mark `[data-conversation-tabs]` moved from the full-width row onto a content-sized tab list inside it, while the runway still measured free width on that element (always 0); it now measures the row and starts after the rightmost content in it, including the "more views" button.
 - **0.4.1** — the runway became **one shared track**: the lead is always on it, followed by the newest 20 subagents; a finished lap respawns at the start with no offset, stopping happens in place, and a script cycles through the actions; a new **subagent list** component swaps the dropdown dots for whales; `--oj-cruise-scale` and `--oj-min-segment` were replaced by `--oj-lap-duration`.
 - **0.4.0** — adds the **header runway** component: subagents are drawn to the right of the session header's tab row, each with the same mode as its member-row position and with displacement reversing together with the turn; the two components are switchable separately.
 - **0.3.0** — running went from one seven-frame run to **four** animations.
