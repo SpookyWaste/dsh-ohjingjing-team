@@ -8,7 +8,7 @@
 
 **Three independently switchable components**: the member-row skin and the subagent list are pure CSS; the header runway reads the roster and the session status and builds its own track to the right of the official tab row
 
-[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.2-blue)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH](https://img.shields.io/badge/DSH-0.2.1--rc.5%20--%200.2.2--rc.1-blue)](https://github.com/deepseek-ai/deepseek-harness)
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/spookywaste/dsh-ohjingjing-team)
 [![npm](https://img.shields.io/npm/v/dsh-ohjingjing-team?logo=npm&logoColor=white)](https://www.npmjs.com/package/dsh-ohjingjing-team)
 
@@ -87,7 +87,7 @@ Refresh the Web GUI and open the Team panel once. The header runway appears on i
 #### Dependencies
 | Item | Value |
 |---|---|
-| DSH | `≥0.2.0-rc.2` |
+| DSH | `≥0.2.1-rc.5` |
 | Official Agent Team component<sub>@deepseek-ai/dsh-experimental-agent-team-profile</sub> | needed by component 1 only; keep it enabled |
 
 

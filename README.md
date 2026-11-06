@@ -8,7 +8,7 @@
 
 **三块可分别开关的组件**：成员行皮肤与子代理列表是纯 CSS；标题栏跑道读名册与状态，在官方标签行右侧自建一条轨道
 
-[![DSH](https://img.shields.io/badge/DSH-0.2.0--rc.2%20--%200.2.2-blue)](https://github.com/deepseek-ai/deepseek-harness)
+[![DSH](https://img.shields.io/badge/DSH-0.2.1--rc.5%20--%200.2.2--rc.1-blue)](https://github.com/deepseek-ai/deepseek-harness)
 [![Listed on dsh-plugin.org](https://dsh-plugin.org/badges/listed.svg)](https://dsh-plugin.org/plugins/spookywaste/dsh-ohjingjing-team)
 [![npm](https://img.shields.io/npm/v/dsh-ohjingjing-team?logo=npm&logoColor=white)](https://www.npmjs.com/package/dsh-ohjingjing-team)
 
@@ -87,7 +87,7 @@ https://github.com/SpookyWaste/dsh-ohjingjing-team
 #### 依赖
 | 项 | 值 |
 |---|---|
-| DSH | `≥0.2.0-rc.2` |
+| DSH | `≥0.2.1-rc.5` |
 | 官方智能体团队组件<sub>@deepseek-ai/dsh-experimental-agent-team-profile</sub> | 仅组件1需要，保持开启 |
 
 
